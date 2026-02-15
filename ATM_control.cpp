@@ -34,7 +34,7 @@ bool ATM_controller::enterPin(std::string pin){
   return result;
 }
 
-void ATM_controller::selectAccount(int choice) {
+void ATM_controller::selectAccount() {
   if(!isAuthenticated){
     cout << "authentication required" << endl;
     return;
@@ -52,10 +52,10 @@ void ATM_controller::selectAccount(int choice) {
   for (int i = 0; i < accounts.size(); ++i) {
     cout << i + 1 << ". " << accounts[i] << endl;
   }
-  cout << "Select (1-" << accounts.size() << "): " << endl;
+  cout << "Select (1-" << accounts.size() << "): ";
 
-
-  //cin >> choice;
+  int choice;
+  cin >> choice;
 
   if (choice > 0 && choice <= (int)accounts.size())
     {

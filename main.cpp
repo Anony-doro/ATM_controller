@@ -10,25 +10,57 @@ int main() {
     bankSystem myBank;
     ATM_controller myATM(&myBank);
 
+    string card;
+    string pin;
+    int choice;
+    int amount;
     cout << "=== ATM System Started ===" << endl;
 
     // normal scenario
     //1. insert card
-    myATM.insertCard("card123");
+    cout << "Insert the card : ";
+    cin >> card;
+    myATM.insertCard(card);
 
     //2. enter pin
-    bool success = myATM.enterPin("1234");
+    cout << "ENTER PIN : ";
+    cin >> pin;
+    bool success = myATM.enterPin(pin);
 
     if (success)
     {
         //3. select account
-        myATM.selectAccount(1);
+        myATM.selectAccount();
         //4. show balance
         myATM.showBalance();
-        //5. deposit
-        myATM.deposit(500);
-        //6. withdraw
-        myATM.withdraw(200);
+        cout << "Withdraw : 1\nDeposit : 2\nShow Balace : 3\n";
+
+        while (true)
+        {
+            cout << "Select : ";
+            cin >> choice;
+            if (choice == 1)
+            {
+                cout << "Withdraw Amount : ";
+                cin >> amount;
+                myATM.withdraw(amount);
+                break;
+            }
+            else if (choice == 2)
+            {
+                cout << "Deposit Amount : ";
+                cin >> amount;
+                myATM.deposit(amount);
+                break;
+            }
+            else if (choice == 3)
+            {
+                myATM.showBalance();
+                break;
+            }
+            else
+                cout << "Invalid Choice" << endl;
+        }
     }
     cout << "=== Transaction Finished ===" << endl;
 

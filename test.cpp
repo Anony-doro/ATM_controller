@@ -20,7 +20,7 @@ void runTests() {
 
     // test for login and check balance
     atm.enterPin("1234"); // 로그인
-    atm.selectAccount(1);
+    atm.selectAccount();
 
     // assume initial balance 0
     atm.deposit(500);

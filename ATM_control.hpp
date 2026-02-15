@@ -14,7 +14,7 @@ public:
     explicit ATM_controller(bankSystem* bank); //constructor
     void insertCard(std::string cardID);
     bool enterPin(std::string pin);
-    void selectAccount(int choice);
+    void selectAccount();
     void showBalance();
     void deposit(int amount);
     void withdraw(int amount);
