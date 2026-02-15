@@ -1,7 +1,7 @@
 #ifndef ATM_CONTROL_HPP
 #define ATM_CONTROL_HPP
 
-#include <BankSys.hpp>
+#include "BankSys.hpp"
 #include <string>
 
 class ATM_controller {
@@ -14,7 +14,7 @@ public:
     explicit ATM_controller(bankSystem* bank); //constructor
     void insertCard(std::string cardID);
     bool enterPin(std::string pin);
-    void selectAccount(std::string accountID);
+    void selectAccount(int choice);
     void showBalance();
     void deposit(int amount);
     void withdraw(int amount);

@@ -34,7 +34,7 @@ bool ATM_controller::enterPin(std::string pin){
   return result;
 }
 
-void ATM_controller::selectAccount(std::string accountID) {
+void ATM_controller::selectAccount(int choice) {
   if(!isAuthenticated){
     cout << "authentication required" << endl;
     return;
@@ -52,10 +52,10 @@ void ATM_controller::selectAccount(std::string accountID) {
   for (int i = 0; i < accounts.size(); ++i) {
     cout << i + 1 << ". " << accounts[i] << endl;
   }
-  cout << "Select (1-" << accounts.size() << "): ";
+  cout << "Select (1-" << accounts.size() << "): " << endl;
 
-  int choice;
-  cin >> choice;
+
+  //cin >> choice;
 
   if (choice > 0 && choice <= (int)accounts.size())
     {
@@ -68,12 +68,12 @@ void ATM_controller::selectAccount(std::string accountID) {
 }
 
 void ATM_controller::showBalance(){
-  int balance = bank->getBalance(currentCardId);
+  int balance = bank->getBalance(currentAccountId);
   cout << "Balance: " << balance << endl;
 }
 
 void ATM_controller::deposit(int amount){
-  if (bank->deposit(currentCardId, amount)){
+  if (bank->deposit(currentAccountId, amount)){
     cout << "Deposited : " << amount << endl;
     showBalance();
   }
@@ -83,7 +83,7 @@ void ATM_controller::deposit(int amount){
 }
 
 void ATM_controller::withdraw(int amount){
-  if (bank->withdraw(currentCardId, amount)){
+  if (bank->withdraw(currentAccountId, amount)){
     cout << "Withdrawn : " << amount << endl;
     showBalance();
   }
