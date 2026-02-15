@@ -40,7 +40,7 @@ void ATM_controller::selectAccount(std::string accountID) {
     return;
   }
 
-  vector<string> accounts = bank->getAccounts(currentAccountId);
+  vector<string> accounts = bank->getAccounts(currentCardId);
 
   if (accounts.empty()) {
     cout << "[Error] No accounts found for this card." << endl;
